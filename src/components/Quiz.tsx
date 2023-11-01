@@ -30,7 +30,7 @@ const Quiz: React.FC = () => {
     quiz.answerQuestion(selectedAnswer);
     quiz.nextQuestion();
     console.log(quiz.getIndex());
-    setState((prevState) => ({ ...prevState, question: quiz.getCurrentQuestion(), score: quiz.getScore()}));
+    setState(() => ({selectedAnswer: null, question: quiz.getCurrentQuestion(), score: quiz.getScore()}));
   } 
 
   const { question, selectedAnswer, score } = state;
@@ -66,7 +66,7 @@ const Quiz: React.FC = () => {
       <h3>Selected Answer:</h3>
       <p>{selectedAnswer ?? 'No answer selected'}</p>
 
-      <button onClick={() => handleButtonClick()}>Next Question</button>
+      <button onClick={() => handleButtonClick()}>{quiz.hasNextQuestion() === false ? "Submit" : "Next Question"}</button>
     </div>
   );
 };
